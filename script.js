@@ -2,6 +2,8 @@ let adidasSuperstar = "Superstar";
 let stockSuperstar = 15;
 let precioSuperstar = 12000;
 
+let descuentoProductos = 0.85;
+
 let adidasContinental = "Continental";
 let stockContinental = 20;
 let precioContinental = 15000
@@ -21,53 +23,48 @@ let precioVenta = 0;
 
 let cantidadProductos = parseInt(prompt("¿Qué cantidad de productos distintos desea comprar?"));
 
+function sinStock(stock){
+    alert("No tenemos esa cantidad, podes comprar hasta " + stock + "unidades");
+}
+
+function stockSuficiente(stock, nombre){
+    stock -= cantidadCompra;
+    console.log("El stock es de: " + stock + nombre);
+}
+
+function descuentoPrecio(precio, descuento){
+    precioVenta += cantidadCompra * precio * descuento;
+}
+
+function compra(stock, precio, nombre, descuento){
+    cantidadCompra = parseInt(prompt("Ingrese la cantidad que quiere comprar: "))
+    if (cantidadCompra <= stock){
+        stockSuficiente(stock, nombre);
+        if(cantidadCompra >= 2){
+            descuentoPrecio(precio, descuento)
+        }
+        else(descuentoPrecio(precio, 1))
+    }
+    else{
+        sinStock(stock)
+    }
+}
+
 for(let i = 0; i < cantidadProductos; i++){
 
     let nombreCompra = prompt("Por favor, ingrese el nombre del producto que desea comprar:");
 
 if (nombreCompra == adidasSuperstar){
-    cantidadCompra = parseInt(prompt("Ingrese cuantas unidades desea:"));
-    if(cantidadCompra <= stockSuperstar){
-        stockSuperstar = stockSuperstar - cantidadCompra;
-        precioVenta += cantidadCompra * precioSuperstar;
-        console.log("Hay en stock " + stockSuperstar + adidasSuperstar);
-    }
-    else{
-        alert("Sin stock suficiente, podés comprar hasta " + stockSuperstar + " unidades");
-    }
+    compra(stockSuperstar, precioSuperstar, adidasSuperstar, descuentoProductos)
 }
 else if (nombreCompra == adidasContinental){
-    cantidadCompra = parseInt(prompt("Ingrese cuantas unidades desea:"));
-    if(cantidadCompra <= stockContinental){
-        stockContinental = stockContinental - cantidadCompra;
-        precioVenta += cantidadCompra * precioContinental;
-        console.log("Hay en stock " + stockContinental + adidasContinental);
-    }
-    else{
-        alert("Sin stock suficiente, podés comprar hasta " + stockContinental + " unidades");
-    }
+    compra(stockContinental, precioContinental, adidasContinental, descuentoProductos)
 }
 else if (nombreCompra == nikeAirmax){
-    cantidadCompra = parseInt(prompt("Ingrese cuantas unidades desea:"));
-    if(cantidadCompra <= stockAirmax){
-        stockAirmax = stockAirmax - cantidadCompra;
-        precioVenta += cantidadCompra * precioAirmax;
-        console.log("Hay en stock " + stockAirmax + nikeAirmax);
-    }
-    else{
-        alert("Sin stock suficiente, podés comprar hasta " + stockAirmax + " unidades");
-    }
+    compra(stockAirmax, precioAirmax, nikeAirmax, descuentoProductos)
 }
 else if (nombreCompra == nikeJoyride){
-    cantidadCompra = parseInt(prompt("Ingrese cuantas unidades desea:"));
-    if(cantidadCompra <= stockJoyride){
-        stockJoyride = stockJoyride - cantidadCompra;
-        precioVenta += cantidadCompra * precioJoyride;
-        console.log("Hay en stock " + stockJoyride + nikeJoyride);
-    }
-    else{
-        alert("Sin stock suficiente, podés comprar hasta " + stockJoyride + " unidades");
-    }
+    compra(stockJoyride, precioJoyride, nikeJoyride, descuentoProductos)
 }
 else{
     alert("No tenemos ese producto");
