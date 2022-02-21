@@ -1,22 +1,25 @@
-let adidasSuperstar = "Superstar";
-let stockSuperstar = 15;
-let precioSuperstar = 12000;
+// constructora
+function Productos(nombreP, stockP, precioP, descuentoP){
+    this.nombre = nombreP;
+    this.stock = stockP;
+    this.precio = precioP;
+    this.descuento = descuentoP;
 
-let descuentoProductos = 0.85;
+    this.venta = function(cantidadCompra){
+        this.stock -= cantidadCompra;
+        console.log("El stock remanente es de: " + this.stock + " " + this.nombre);
+    }
+}
 
-let adidasContinental = "Continental";
-let stockContinental = 20;
-let precioContinental = 15000
+const productoA = new Productos("Superstar", 15, 12000, 0.85);
+const productoB = new Productos("Continental", 20, 15000, 0.85);
+const productoC = new Productos("Joyride", 5, 18000, 0.90);
+const productoD = new Productos("Airmax", 15, 16000, 0,85);
 
-let nikeJoyride = "Joyride";
-let stockJoyride = 5;
-let precioJoyride = 18000;
+alert ("Nuestro catálogo: \n" + productoA.nombre + "\n" + productoB.nombre + "\n" + productoC.nombre + "\n" + productoD.nombre);
 
-let nikeAirmax = "Airmax";
-let stockAirmax = 15;
-let precioAirmax = 16000;
-
-alert ("Nuestro catálogo: \n" + adidasSuperstar + "\n" + adidasContinental + "\n" + nikeJoyride + "\n" + nikeAirmax)
+// array
+const listaProductos = [productoA, productoB, productoC, productoD];
 
 let cantidadCompra;
 let precioVenta = 0;
@@ -24,22 +27,17 @@ let precioVenta = 0;
 let cantidadProductos = parseInt(prompt("¿Qué cantidad de productos distintos desea comprar?"));
 
 function sinStock(stock){
-    alert("No tenemos esa cantidad, podes comprar hasta " + stock + "unidades");
-}
-
-function stockSuficiente(stock, nombre){
-    stock -= cantidadCompra;
-    console.log("El stock es de: " + stock + nombre);
+    alert("No tenemos esa cantidad, podes comprar hasta " + stock + " unidades");
 }
 
 function descuentoPrecio(precio, descuento){
     precioVenta += cantidadCompra * precio * descuento;
 }
 
-function compra(stock, precio, nombre, descuento){
+function compra(stock, precio, descuento, producto){
     cantidadCompra = parseInt(prompt("Ingrese la cantidad que quiere comprar: "))
-    if (cantidadCompra <= stock){
-        stockSuficiente(stock, nombre);
+    if(cantidadCompra <= stock){
+        producto.venta(cantidadCompra);
         if(cantidadCompra >= 2){
             descuentoPrecio(precio, descuento)
         }
@@ -54,17 +52,17 @@ for(let i = 0; i < cantidadProductos; i++){
 
     let nombreCompra = prompt("Por favor, ingrese el nombre del producto que desea comprar:");
 
-if (nombreCompra == adidasSuperstar){
-    compra(stockSuperstar, precioSuperstar, adidasSuperstar, descuentoProductos)
+if (nombreCompra == productoA.nombre){
+    compra(productoA.stock, productoA.precio, productoA.descuento, productoA)
 }
-else if (nombreCompra == adidasContinental){
-    compra(stockContinental, precioContinental, adidasContinental, descuentoProductos)
+else if (nombreCompra == productoB.nombre){
+    compra(productoB.stock, productoB.precio, productoB.descuento, productoB)
 }
-else if (nombreCompra == nikeAirmax){
-    compra(stockAirmax, precioAirmax, nikeAirmax, descuentoProductos)
+else if (nombreCompra == productoC.nombre){
+    compra(productoC.stock, productoC.precio, productoC.descuento, productoC)
 }
-else if (nombreCompra == nikeJoyride){
-    compra(stockJoyride, precioJoyride, nikeJoyride, descuentoProductos)
+else if (nombreCompra == productoD.nombre){
+    compra(productoD.stock, productoD.precio, productoD.descuento, productoD)
 }
 else{
     alert("No tenemos ese producto");
