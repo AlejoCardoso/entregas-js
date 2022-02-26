@@ -21,6 +21,32 @@ alert ("Nuestro catálogo: \n" + productoA.nombre + "\n" + productoB.nombre + "\
 // array
 const listaProductos = [productoA, productoB, productoC, productoD];
 
+
+
+// find
+const resultado = listaProductos.find((elemento) => elemento.nombre === "Superstar");
+const resultado2 = listaProductos.find((elemento) => elemento.nombre === "NMD");
+
+console.log(resultado);
+console.log(resultado2);
+
+// filter
+const resultado3 = listaProductos.filter((elemento) => elemento.precio <= 15000);
+
+console.log(resultado3);
+
+// map
+const actualizacionPrecios = listaProductos.map((elemento) => {
+    return {
+        nombre: elemento.nombre,
+        precio: elemento.precio * 1.50
+    }
+})
+
+console.log(actualizacionPrecios);
+
+
+
 let cantidadCompra;
 let precioVenta = 0;
 
