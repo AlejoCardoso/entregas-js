@@ -1,9 +1,11 @@
 // constructora
-function Productos(nombreP, stockP, precioP, descuentoP){
+function Productos(nombreP, stockP, precioP, descuentoP, marcaP, imgP){
     this.nombre = nombreP;
     this.stock = stockP;
     this.precio = precioP;
     this.descuento = descuentoP;
+    this.marca = marcaP;
+    this.img = imgP;
 
     this.venta = function(cantidadCompra){
         this.stock -= cantidadCompra;
@@ -11,17 +13,40 @@ function Productos(nombreP, stockP, precioP, descuentoP){
     }
 }
 
-const productoA = new Productos("Superstar", 15, 12000, 0.85);
-const productoB = new Productos("Continental", 20, 15000, 0.85);
-const productoC = new Productos("Joyride", 5, 18000, 0.90);
-const productoD = new Productos("Airmax", 15, 16000, 0,85);
+const productoA = new Productos("Superstar", 15, 12000, 0.85, "Adidas", "./img/superstar.jpg");
+const productoB = new Productos("Continental", 20, 15000, 0.85, "Adidas", "./img/continental.jpg");
+const productoC = new Productos("Joyride", 5, 18000, 0.90, "Nike", "./img/joyride.jpg");
+const productoD = new Productos("Airmax", 15, 16000, 0.85, "Nike", "./img/airmax.jpg");
 
-alert ("Nuestro catálogo: \n" + productoA.nombre + "\n" + productoB.nombre + "\n" + productoC.nombre + "\n" + productoD.nombre);
 
 // array
 const listaProductos = [productoA, productoB, productoC, productoD];
 
+listaProductos.push(new Productos("Zoom", 10, 14000, 0.95, "Nike", "./img/zoom.jpg"));
+listaProductos.push(new Productos("Supernova", 8, 18500, 1, "Adidas", "./img/supernova.jpg"));
 
+let eleccionMarca = alert("Nuestro stock se compone de: \n" + "Nike" + "\n" + "Adidas")
+let marcaProducto = prompt("Ingrese la marca de producto que quiere ver:");
+
+const listaMarca = listaProductos.filter(x => x.marca == marcaProducto)
+
+for (const producto of listaMarca){
+    let contenedor = document.createElement("div");
+
+    contenedor.innerHTML = `<div class="centrado">
+                                <div class="card">
+                                <h3 class="titulo"> Marca: ${producto.marca}</h3>
+                                <p class="contenido"> Producto: ${producto.nombre}</p>
+                                <b class="contenido"> $ ${producto.precio}</b>
+                                <img class="contenido" src=${producto.img} width = 300px> 
+                                <button class="boton">Comprar</button>
+                                </div>
+                            </div>`
+
+    document.body.appendChild(contenedor);
+}
+
+/* alert ("Nuestro catálogo: \n" + listaProductos[0].nombre + "\n" + listaProductos[1].nombre + "\n" + listaProductos[2].nombre + "\n" + listaProductos[3].nombre + "\n" + listaProductos[4].nombre + "\n" + listaProductos[5].nombre); */
 
 // find
 const resultado = listaProductos.find((elemento) => elemento.nombre === "Superstar");
@@ -47,7 +72,7 @@ console.log(actualizacionPrecios);
 
 
 
-let cantidadCompra;
+/* let cantidadCompra;
 let precioVenta = 0;
 
 let cantidadProductos = parseInt(prompt("¿Qué cantidad de productos distintos desea comprar?"));
@@ -78,21 +103,34 @@ for(let i = 0; i < cantidadProductos; i++){
 
     let nombreCompra = prompt("Por favor, ingrese el nombre del producto que desea comprar:");
 
-if (nombreCompra == productoA.nombre){
-    compra(productoA.stock, productoA.precio, productoA.descuento, productoA)
-}
-else if (nombreCompra == productoB.nombre){
-    compra(productoB.stock, productoB.precio, productoB.descuento, productoB)
-}
-else if (nombreCompra == productoC.nombre){
-    compra(productoC.stock, productoC.precio, productoC.descuento, productoC)
-}
-else if (nombreCompra == productoD.nombre){
-    compra(productoD.stock, productoD.precio, productoD.descuento, productoD)
-}
-else{
-    alert("No tenemos ese producto");
-}
-}
+    let productoBuscado = listaProductos.find(buscar => buscar.nombre == nombreCompra);
 
-alert("El precio de su compra es de: $" + precioVenta);
+    console.log(productoBuscado);
+    alert(productoBuscado.nombre);
+
+    
+
+    if (nombreCompra == listaProductos[0].nombre){
+        compra(listaProductos[0].stock, listaProductos[0].precio, listaProductos[0].descuento, listaProductos[0])
+    }
+    else if (nombreCompra == listaProductos[1].nombre){
+        compra(listaProductos[1].stock, listaProductos[1].precio, listaProductos[1].descuento, listaProductos[1])
+    }
+    else if (nombreCompra == listaProductos[2].nombre){
+        compra(listaProductos[2].stock, listaProductos[2].precio, listaProductos[2].descuento, listaProductos[2])
+    }
+    else if (nombreCompra == listaProductos[3].nombre){
+        compra(listaProductos[3].stock, listaProductos[3].precio, listaProductos[3].descuento, listaProductos[3])
+    }
+    else if (nombreCompra == listaProductos[4].nombre){
+        compra(listaProductos[4].stock, listaProductos[4].precio, listaProductos[4].descuento, listaProductos[4])
+    }
+    else if (nombreCompra == listaProductos[5].nombre){
+        compra(listaProductos[5].stock, listaProductos[5].precio, listaProductos[5].descuento, listaProductos[5])
+    }
+    else{
+        alert("No tenemos ese producto");
+    }
+} 
+
+alert("El precio de su compra es de: $" + precioVenta); */
