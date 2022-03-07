@@ -41,3 +41,31 @@
     font-size: 60px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.catalogo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.botones {
+    display: flex;
+    justify-content: center;
+}
+
+.boton2 {
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    width: 150px;
+}
+
+.boton:hover {
+    filter: brightness(90%);
+    background-color: lightcyan;
+}
+
+.boton2:hover{
+    filter: brightness(90%);
+    background-color: lightcyan;
+}
