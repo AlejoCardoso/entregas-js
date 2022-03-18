@@ -220,6 +220,7 @@ class UI {
 
 }
 
+// sweet alert
 let popUp = document.querySelector(".pop-up-carrito");
 
 popUp.addEventListener("click", aviso)
@@ -228,7 +229,7 @@ function aviso(){
     Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Your work has been saved',
+        title: 'Se ha eliminado del carrito',
         showConfirmButton: false,
         timer: 1500
       })
