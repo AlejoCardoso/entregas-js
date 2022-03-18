@@ -220,6 +220,20 @@ class UI {
 
 }
 
+let popUp = document.querySelector(".pop-up-carrito");
+
+popUp.addEventListener("click", aviso)
+
+function aviso(){
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      })
+}
+
 // local storage
 class Storage {
     // guarda el carrito
