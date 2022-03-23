@@ -227,9 +227,10 @@ popUp.addEventListener("click", aviso)
 
 function aviso(){
     Swal.fire({
-        position: 'top-end',
+        position: 'top',
         icon: 'success',
-        title: 'Se ha eliminado del carrito',
+        iconColor: 'orange',
+        title: 'El carrito ha sido vaciado',
         showConfirmButton: false,
         timer: 1500
       })
@@ -263,4 +264,13 @@ document.addEventListener('DOMContentLoaded', ()=> {
     ui.displayInCart();
     // funcionabilidad al carrito
     ui.cartFunctions();
+});
+
+// jquery
+
+$(document).ready(function () {
+    $(".radio-btn").click(function () {
+        $(".radio-inner").toggleClass("active");
+        $("body").toggleClass("dark");
+    });
 });
