@@ -53,13 +53,13 @@ class UI {
                 e.target.disabled = true;
 
                 // nuevo objeto para agregar productos
-                let cartObj = {
+                let cartObject = {
                     ...this.getProductId(id),
                     quantity: 1
                 };
 
                 // agrega objeto al carro
-                cartArray = [...cartArray, cartObj];
+                cartArray = [...cartArray, cartObject];
 
                 // guarda cartArray en storage
                 Storage.saveCart(cartArray);
@@ -265,3 +265,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
     // funcionabilidad al carrito
     ui.cartFunctions();
 });
+
+// API leaflet map
+let map = L.map('map').setView([-34.6,-58.633333],15)
+
+//Agregar tilelAyer mapa base desde openstreetmap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+L.marker([-34.6, -58.633333]).addTo(map)
+    .bindPopup('¡Visita nuestro local!')
+    .openPopup();
