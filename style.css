@@ -245,3 +245,9 @@ footer {
 .btn-effect span:hover:after {
   width: 100%;
 }
+#map {
+  height: 400px;
+  width: 800px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
