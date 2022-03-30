@@ -1,4 +1,4 @@
-// Elements
+// elementos
 const $ = x => document.querySelector(x);
 
 const items = $('.items');
@@ -199,7 +199,7 @@ class UI {
         // esconde carrito
         this.hideCart();
     }
-
+    
     removeItem(id) {
         // filtra cartArray
         cartArray = cartArray.filter(el => el.id !== Number(id));
@@ -217,7 +217,6 @@ class UI {
     getBtnId(id) {
         return selectedButtons.find(el => el.dataset.id === String(id));
     }
-
 }
 
 // sweet alert
